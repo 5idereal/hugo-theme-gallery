@@ -1,18 +1,18 @@
 albumCount:
-  one: 1 album
-  other: "{{ . }} albums"
-menu: Menu
-in: in
-home: Home
-pageNotFound: Page not found
+  one: 1 本相簿
+  other: "{{ . }} 本相簿"
+menu: 選單
+in: /
+home: 首頁
+pageNotFound: 找不到頁面
 photoCount:
-  one: 1 photo
-  other: "{{ . }} photos"
-toHomepage: Go to homepage
-closeTitle: Close
-zoomTitle: Zoom
-arrowPrevTitle: Previous
-arrowNextTitle: Next
-errorMsg: The photo cannot be loaded
-downloadTitle: Download
-relatedAlbums: Related albums
+  one: 1 張照片
+  other: "{{ . }} 張照片"
+toHomepage: 前往首頁
+closeTitle: 關閉
+zoomTitle: 縮放
+arrowPrevTitle: 上一張
+arrowNextTitle: 下一張
+errorMsg: 無法載入照片
+downloadTitle: 下載
+relatedAlbums: 相關相簿
