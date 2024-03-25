@@ -1,0 +1,56 @@
+.pswp__shutter-speed {
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  height: auto;
+  align-self: center;
+  text-shadow: 1px 1px 3px black;
+  margin-right: 15px;
+  display: flex;
+  gap: 4px;
+}
+
+.pswp__aperture {
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  height: auto;
+  align-self: center;
+  text-shadow: 1px 1px 3px black;
+  margin-right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.pswp__focal-length {
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  height: auto;
+  align-self: center;
+  text-shadow: 1px 1px 3px black;
+  margin-right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+.pswp__time {
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  height: auto;
+  align-self: center;
+  text-shadow: 1px 1px 3px black;
+  margin-right: 8px;
+  display: flex;
+  gap: 4px;
+}
+
+#aperture_icon {
+	position: relative;
+	display: block;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+
+}
