@@ -1,6 +1,5 @@
 import PhotoSwipeLightbox from "./photoswipe/photoswipe-lightbox.esm.js";
 import PhotoSwipe from "./photoswipe/photoswipe.esm.js";
-import PhotoSwipeDynamicCaption from "./photoswipe/photoswipe-dynamic-caption-plugin.esm.min.js";
 import * as params from "@params";
 import ExifReader from 'exifreader';
 
@@ -13,21 +12,6 @@ if (gallery) {
     showHideAnimationType: "zoom",
     bgOpacity: 0.9,
     pswpModule: PhotoSwipe,
-    paddingFn: (viewportSize) => {
-      return viewportSize.x < 700
-        ? {
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-        }
-        : {
-          top: 30,
-          bottom: 30,
-          left: 0,
-          right: 0,
-        };
-    },
     close: false,
     zoom: false,
     closeTitle: params.closeTitle,
@@ -114,12 +98,6 @@ if (gallery) {
 
   lightbox.on("close", () => {
     history.replaceState("", document.title, window.location.pathname);
-  });
-
-  new PhotoSwipeDynamicCaption(lightbox, {
-    mobileLayoutBreakpoint: 700,
-    type: "auto",
-    mobileCaptionOverlapRatio: 1,
   });
 
   lightbox.init();
