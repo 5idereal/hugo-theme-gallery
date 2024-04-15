@@ -2,18 +2,8 @@
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
     {{ range $image :=  .Resources.ByType "image" }}
-      {{ $rotation := "" }}
       {{ $title := "" }}
       {{ with $image.Exif }}
-        {{ with .Tags.Orientation }}
-          {{ if or (eq . 8) (eq . 7) }}
-            {{ $rotation = " r90" }}
-          {{ else if or (eq . 3) (eq . 4) }}
-            {{ $rotation = " r180" }}
-          {{ else if or (eq . 6) (eq . 5) }}
-            {{ $rotation = " r270" }}
-          {{ end }}
-        {{ end }}
         {{ with .Tags.ImageDescription }}
           {{/* Title from EXIF ImageDescription */}}
           {{ $title = . }}
@@ -26,7 +16,6 @@
       {{ $images = $images | append (dict
         "Name" $image.Name
         "Title" $title
-        "rotation" $rotation
         "image" $image
         )
       }}
