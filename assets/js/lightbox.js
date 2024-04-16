@@ -67,7 +67,7 @@ if (gallery) {
       document.getElementById("aperture_icon").nextSibling.innerHTML = result["FNumber"].description.substring(2);
       document.getElementById("iso_icon").nextSibling.innerHTML = result["ISOSpeedRatings"].description;
       document.getElementById("speed_icon").nextSibling.innerHTML = result["ExposureTime"].description;
-      document.getElementById("length_icon").nextSibling.innerHTML = result["FocalLength"].description.slice(0, -3);
+      document.getElementById("length_icon").nextSibling.innerHTML = result["FocalLengthIn35mmFilm"];
       document.getElementById("time_icon").nextSibling.innerHTML = result["DateTimeOriginal"].description.split(" ")[1];
     });
   });
