@@ -1,39 +1,109 @@
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
-    {{ range $image :=  .Resources.ByType "image" }}
-      {{ $title := "" }}
-      {{ with $image.Exif }}
-        {{ with .Tags.ImageDescription }}
-          {{/* Title from EXIF ImageDescription */}}
-          {{ $title = . }}
-        {{ end }}
-      {{ end }}
-      {{ if ne $image.Title $image.Name }}
-        {{/* Title from front matter */}}
-        {{ $title = $image.Title }}
-      {{ end }}
-      {{ $images = $images | append (dict
-        "Name" $image.Name
-        "Title" $title
-        "image" $image
-        )
-      }}
+    {{ range $image := .Resources.ByType "image" }}
+    {{ $title := "" }}
+    {{ with $image.Exif }}
+    {{ with .Tags.ImageDescription }}
+    {{/* Title from EXIF ImageDescription */}}
+    {{ $title = . }}
+    {{ end }}
+    {{ end }}
+    {{ if ne $image.Title $image.Name }}
+    {{/* Title from front matter */}}
+    {{ $title = $image.Title }}
+    {{ end }}
+    {{ $images = $images | append (dict
+    "Name" $image.Name
+    "Title" $title
+    "image" $image
+    )
+    }}
     {{ end }}
     {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
-      {{ $image := .image }}
-      {{ $thumbnail := ($image.Fit (printf "%s %s" "600x600" .rotation)) }}
-      {{ $full := $image }}
-      {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
-      <a class="gallery-item" href="{{ $image.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}" data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" title="{{ .Title }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $thumbnail.Width }} / {{ $thumbnail.Height }}">
-        <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ $color }}" alt="{{ .Title }}" />
-        <meta itemprop="contentUrl" content="{{ $image.RelPermalink }}" />
-        {{ with site.Params.Author }}
-          <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
-            <meta itemprop="name" content="{{ site.Params.Author.name }}" />
-          </span>
-        {{ end }}
-      </a>
+    {{ $image := .image }}
+    {{ $thumbnail := ($image.Fit (printf "%s %s" "600x600" .rotation)) }}
+    {{ $full := $image }}
+    {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
+    <a class="gallery-item" href="{{ $image.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}"
+      data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" title="{{ .Title }}" itemscope
+      itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $thumbnail.Width }} / {{ $thumbnail.Height }}">
+      <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}"
+        src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ $color }}" alt="{{ .Title }}" />
+      <meta itemprop="contentUrl" content="{{ $image.RelPermalink }}" />
+      {{ with site.Params.Author }}
+      <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
+        <meta itemprop="name" content="{{ site.Params.Author.name }}" />
+      </span>
+      {{ end }}
+    </a>
     {{ end }}
   </div>
 </section>
+
+<div id="mySidenav" class="sidenav"><a id="closebtn">&times;</a>
+  <p>Camera Portrait</p>
+  <div class="wrap-collabsible">
+    <input id="collapsible-tone" class="toggle tone" type="checkbox" checked>
+    <label for="collapsible-tone" class="lbl-toggle">影調</label>
+    <div class="collapsible-content tone">
+      <div class="content-inner">
+        <div class="wrapper exposure"><input type="range" disabled min="-5" max="5" value="0" /></div>
+        <div class="wrapper contrast reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper highlights"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper shadows"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper whites"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper blacks"><input type="range" disabled min="-100" max="100" value="50" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap-collabsible">
+    <input id="collapsible-color" class="toggle color" type="checkbox" checked>
+    <label for="collapsible-color" class="lbl-toggle">色調</label>
+    <div class="collapsible-content color">
+      <div class="content-inner">
+        <div class="wrapper temp"><input type="range" disabled min="2000" max="50000" value="0" /></div>
+        <div class="wrapper tint"><input type="range" disabled min="-150" max="150" value="50" /></div>
+        <div class="wrapper vibrance"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper saturation"><input type="range" disabled min="-100" max="100" value="50" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap-collabsible">
+    <input id="collapsible-effects" class="toggle effects" type="checkbox" checked>
+    <label for="collapsible-effects" class="lbl-toggle">效果</label>
+    <div class="collapsible-content effects">
+      <div class="content-inner">
+        <div class="wrapper texture reverse"><input type="range" disabled min="-5" max="5" value="0" /></div>
+        <div class="wrapper clarity reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper dehaze reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap-collabsible">
+    <input id="collapsible-details" class="toggle" type="checkbox" checked>
+    <label for="collapsible-details" class="lbl-toggle">細節</label>
+    <div class="collapsible-content">
+      <div class="content-inner">
+        <div class="wrapper sharpness"><input type="range" disabled min="-5" max="5" value="0" /></div>
+        <div class="wrapper sharpen-radius"><input type="range" disabled min="-5" max="5" value="0" /></div>
+        <div class="wrapper sharpen-detail"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper sharpen-masking reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap-collabsible">
+    <input id="collapsible-pcvignette" class="toggle pcvignette" type="checkbox" checked>
+    <label for="collapsible-pcvignette" class="lbl-toggle">裁切後暈影</label>
+    <div class="collapsible-content pcvignette">
+      <div class="content-inner">
+        <div class="wrapper style">Hightlight Priority</div>
+        <div class="wrapper amount"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper midpoint"><input type="range" disabled min="0" max="100" value="50" /></div>
+        <div class="wrapper roundness"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        <div class="wrapper feather"><input type="range" disabled min="0" max="100" value="50" /></div>
+        <div class="wrapper vhighlights"><input type="range" disabled min="-100" max="100" value="50" /></div>
+      </div>
+    </div>
+  </div>
+</div>

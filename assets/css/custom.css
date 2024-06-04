@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 .pswp__shutter-speed {
   font-size: 14px;
   line-height: 1;
@@ -64,11 +68,249 @@
 }
 
 #aperture_icon {
-	position: relative;
-	display: block;
-	padding: 0;
-	margin: 0;
-	overflow: hidden;
+  position: relative;
+  display: block;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
   opacity: 0.85;
-  filter: drop-shadow( 1px 1px 3px rgba(0, 0, 0, .7));
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, .7));
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 100010;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  transition: 0.5s;
+  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 65%, rgba(255, 255, 255, 0) 100%);
+
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.pswp__scroll-wrap {
+  transition: margin-left .5s;
+}
+
+.wrapper {
+  position: relative;
+  height: 3rem;
+  width: 20rem;
+}
+
+.wrapper::before,
+.wrapper::after {
+  display: block;
+  position: absolute;
+  z-index: 99;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 1rem 1rem;
+  pointer-events: none;
+}
+
+.wrapper.exposure::before {
+  content: "曝光";
+}
+
+.wrapper.contrast::before {
+  content: "對比";
+}
+
+.wrapper.highlights::before {
+  content: "亮部";
+}
+
+.wrapper.shadows::before {
+  content: "暗部";
+}
+
+.wrapper.whites::before {
+  content: "白色";
+}
+
+.wrapper.blacks::before {
+  content: "黑色";
+}
+
+.wrapper.temp::before {
+  content: "色溫";
+}
+
+.wrapper.tint::before {
+  content: "色調";
+}
+
+.wrapper.vibrance::before {
+  content: "鮮豔度";
+}
+
+.wrapper.saturation::before {
+  content: "飽和度";
+}
+
+.wrapper.amount::before {
+  content: "數值";
+}
+
+.wrapper.midpoint::before {
+  content: "中點";
+}
+
+.wrapper.roundness::before {
+  content: "圓度";
+}
+
+.wrapper.feather::before {
+  content: "羽化";
+}
+
+.wrapper.vhighlights::before {
+  content: "亮部";
+}
+
+.wrapper.texture::before {
+  content: "材質";
+}
+
+.wrapper.clarity::before {
+  content: "清晰";
+}
+
+.wrapper.dehaze::before {
+  content: "去霧";
+}
+
+.wrapper.sharpness::before {
+  content: "銳化";
+}
+
+.wrapper.sharpen-radius::before {
+  content: "半徑";
+}
+
+.wrapper.sharpen-detail::before {
+  content: "細節";
+}
+
+.wrapper.sharpen-masking::before {
+  content: "遮罩";
+}
+
+.wrapper.reverse input {
+  background: linear-gradient(to left, #535353 0%, #DDDDDD 100%);
+}
+
+.wrapper.reverse::before {
+  color: #181818;
+}
+
+.wrapper.reverse::after{
+  color: #FFFFFF;
+}
+
+.wrapper.temp input {
+  background: linear-gradient(to right, #2C2E82 0%, #969497 50%, #838334 100%);
+}
+
+.wrapper.tint input {
+  background: linear-gradient(to right, #71C970 0%, #969497 50%, #C96FC8 100%);
+}
+
+.wrapper.saturation input {
+  background: linear-gradient(to right, #969497 0%, #ADBB96 50%, #84C0A1 70%, #A569CF 90%, #DA738B 100%);
+}
+
+.wrapper.vibrance input {
+  background: linear-gradient(to right, #969497 0%, #ADBB96 50%, #84C0A1 70%, #A569CF 90%, #DA738B 100%);
+}
+
+.wrapper::after {
+  content: attr(attr);
+  right: 0;
+  color: #181818;
+  text-shadow: none;
+}
+
+input[type=range] {
+  appearance: none;
+  background: linear-gradient(90deg, #535353 0%, #DDDDDD 100%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  width: 20rem;
+  height: 2.5rem;
+  transform: translate(-50%, -50%);
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 0;
+  box-shadow: -20rem 0 0 20rem rgba(255, 255, 255, 0.2);
+}
+
+.wrap-collabsible {
+  margin-bottom: 0.5rem 0;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+  transition: transform .2s ease-out;
+}
+
+.toggle:checked+.lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked+.lbl-toggle+.collapsible-content {
+  max-height: 100vh;
+}
+
+.collapsible-content .content-inner {
+  padding: .5rem 1rem;
 }

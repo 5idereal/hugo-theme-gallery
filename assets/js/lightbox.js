@@ -14,10 +14,8 @@ if (gallery) {
     pswpModule: PhotoSwipe,
     close: false,
     zoom: false,
-    closeTitle: params.closeTitle,
-    zoomTitle: params.zoomTitle,
-    arrowPrevTitle: params.arrowPrevTitle,
-    arrowNextTitle: params.arrowNextTitle,
+    arrowPrev: false,
+    arrowNext: false,
     errorMsg: params.errorMsg,
   });
   lightbox.on('uiRegister', function () {
@@ -60,6 +58,17 @@ if (gallery) {
     });
   });
 
+  lightbox.on('uiRegister', function () {
+    lightbox.pswp.ui.registerElement({
+      name: 'time',
+      order: 7,
+      html: 'Open',
+      isButton: true,
+      onClick: () => {
+        document.getElementById("mySidenav").style.width = "300px";
+      }
+    });
+  });
 
   lightbox.on("change", async () => {
     history.replaceState("", document.title, "#" + lightbox.pswp.currSlide.index);
@@ -69,6 +78,38 @@ if (gallery) {
       document.getElementById("speed_icon").nextSibling.innerHTML = result["ExposureTime"].description;
       document.getElementById("length_icon").nextSibling.innerHTML = result["FocalLengthIn35mmFilm"].description;
       document.getElementById("time_icon").nextSibling.innerHTML = result["DateTimeOriginal"].description.split(" ")[1];
+      document.querySelector(".exposure input").value = result["Exposure2012"].description.replace(/^\++/, '');
+      document.querySelector(".exposure").setAttribute("attr", result["Exposure2012"].description.replace(/^\++/, ''));
+      document.querySelector(".contrast input").value = result["Contrast2012"].description.replace(/^\++/, '');
+      document.querySelector(".contrast").setAttribute("attr", result["Contrast2012"].description.replace(/^\++/, ''));
+      document.querySelector(".highlights input").value = result["Highlights2012"].description.replace(/^\++/, '');
+      document.querySelector(".highlights").setAttribute("attr", result["Highlights2012"].description.replace(/^\++/, ''));
+      document.querySelector(".shadows input").value = result["Shadows2012"].description.replace(/^\++/, '');
+      document.querySelector(".shadows").setAttribute("attr", result["Shadows2012"].description.replace(/^\++/, ''));
+      document.querySelector(".whites input").value = result["Whites2012"].description.replace(/^\++/, '');
+      document.querySelector(".whites").setAttribute("attr", result["Whites2012"].description.replace(/^\++/, ''));
+      document.querySelector(".blacks input").value = result["Blacks2012"].description.replace(/^\++/, '');
+      document.querySelector(".blacks").setAttribute("attr", result["Blacks2012"].description.replace(/^\++/, ''));
+      document.querySelector(".temp input").value = result["Temperature"].description.replace(/^\++/, '');
+      document.querySelector(".temp").setAttribute("attr", result["Temperature"].description.replace(/^\++/, ''));
+      document.querySelector(".tint input").value = result["Tint"].description.replace(/^\++/, '');
+      document.querySelector(".tint").setAttribute("attr", result["Tint"].description.replace(/^\++/, ''));
+      document.querySelector(".vibrance input").value = result["Vibrance"].description.replace(/^\++/, '');
+      document.querySelector(".vibrance").setAttribute("attr", result["Vibrance"].description.replace(/^\++/, ''));
+      document.querySelector(".saturation input").value = result["Saturation"].description.replace(/^\++/, '');
+      document.querySelector(".saturation").setAttribute("attr", result["Saturation"].description.replace(/^\++/, ''));
+      document.querySelector(".midpoint input").value = result["PostCropVignetteMidpoint"].description.replace(/^\++/, '');
+      document.querySelector(".midpoint").setAttribute("attr", result["PostCropVignetteMidpoint"].description.replace(/^\++/, ''));
+      document.querySelector(".amount input").value = result["PostCropVignetteAmount"].description.replace(/^\++/, '');
+      document.querySelector(".amount").setAttribute("attr", result["PostCropVignetteAmount"].description.replace(/^\++/, ''));
+      document.querySelector(".roundness input").value = result["PostCropVignetteRoundness"].description.replace(/^\++/, '');
+      document.querySelector(".roundness").setAttribute("attr", result["PostCropVignetteRoundness"].description.replace(/^\++/, ''));
+      document.querySelector(".feather input").value = result["PostCropVignetteFeather"].description.replace(/^\++/, '');
+      document.querySelector(".feather").setAttribute("attr", result["PostCropVignetteFeather"].description.replace(/^\++/, ''));
+      document.querySelector(".vhighlights input").value = result["PostCropVignetteHighlightContrast"].description.replace(/^\++/, '');
+      document.querySelector(".vhighlights").setAttribute("attr", result["PostCropVignetteHighlightContrast"].description.replace(/^\++/, ''));
+      document.querySelector(".texture input").value = result["Texture"].description.replace(/^\++/, '');
+      document.querySelector(".texture").setAttribute("attr", result["Texture"].description.replace(/^\++/, ''));
     });
   });
 
