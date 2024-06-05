@@ -314,3 +314,7 @@ input[type='checkbox'] {
 .collapsible-content .content-inner {
   padding: .5rem 1rem;
 }
+
+.wrap-collabsible.pcvignette {
+  display: none;
+}
