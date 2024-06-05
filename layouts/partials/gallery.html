@@ -42,78 +42,82 @@
 </section>
 
 <div id="mySidenav" class="sidenav"><a id="closebtn">&times;</a>
-  <div id="side-warning" style="text-align: center;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"  color ="white" viewBox="0 0 24 24"><path d="M12 5.177l8.631 15.823h-17.262l8.631-15.823zm0-4.177l-12 22h24l-12-22zm-1 9h2v6h-2v-6zm1 9.75c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25z"/></svg>
+  <div id="side-warning" style="position:absolute;top:40%;padding-left: 10px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="white" viewBox="0 0 24 24"  style="margin:auto;padding-bottom: 0.8rem;">
+      <path
+        d="M12 5.177l8.631 15.823h-17.262l8.631-15.823zm0-4.177l-12 22h24l-12-22zm-1 9h2v6h-2v-6zm1 9.75c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25z" />
+    </svg>
     <p>這張圖片沒有可顯示的詳細資訊。</p>
   </div>
-<div id="side-detail">
-  <p>Camera Portrait</p>
-  <div class="wrap-collabsible">
-    <input id="collapsible-tone" class="toggle tone" type="checkbox" checked>
-    <label for="collapsible-tone" class="lbl-toggle">影調</label>
-    <div class="collapsible-content tone">
-      <div class="content-inner">
-        <div class="wrapper exposure"><input type="range" disabled min="-5" max="5" value="0" /></div>
-        <div class="wrapper contrast reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper highlights"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper shadows"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper whites"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper blacks"><input type="range" disabled min="-100" max="100" value="50" /></div>
+  <div id="side-detail">
+    <p>Camera Portrait</p>
+    <div class="wrap-collabsible">
+      <input id="collapsible-tone" class="toggle tone" type="checkbox" checked>
+      <label for="collapsible-tone" class="lbl-toggle">影調</label>
+      <div class="collapsible-content tone">
+        <div class="content-inner">
+          <div class="wrapper exposure"><input type="range" disabled min="-5" max="5" value="0" /></div>
+          <div class="wrapper contrast reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper highlights"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper shadows"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper whites"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper blacks"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap-collabsible">
+      <input id="collapsible-color" class="toggle color" type="checkbox" checked>
+      <label for="collapsible-color" class="lbl-toggle">色調</label>
+      <div class="collapsible-content color">
+        <div class="content-inner">
+          <div class="wrapper temp"><input type="range" disabled min="2000" max="10000" value="0" /></div>
+          <div class="wrapper tint"><input type="range" disabled min="-150" max="150" value="50" /></div>
+          <div class="wrapper vibrance"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper saturation"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap-collabsible">
+      <input id="collapsible-effects" class="toggle effects" type="checkbox" checked>
+      <label for="collapsible-effects" class="lbl-toggle">效果</label>
+      <div class="collapsible-content effects">
+        <div class="content-inner">
+          <div class="wrapper texture reverse"><input type="range" disabled min="-100" max="100" value="0" /></div>
+          <div class="wrapper clarity reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper dehaze reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap-collabsible">
+      <input id="collapsible-details" class="toggle" type="checkbox">
+      <label for="collapsible-details" class="lbl-toggle">細節</label>
+      <div class="collapsible-content">
+        <div class="content-inner">
+          <div class="wrapper sharpness"><input type="range" disabled min="0" max="150" value="0" /></div>
+          <div class="wrapper sharpen-radius"><input type="range" disabled min="0.5" max="3" value="1" /></div>
+          <div class="wrapper sharpen-detail"><input type="range" disabled min="0" max="100" value="50" /></div>
+          <div class="wrapper sharpen-masking reverse"><input type="range" disabled min="0" max="100" value="50" />
+          </div>
+          <p>降噪</p>
+          <div class="wrapper luminance"><input type="range" disabled min="0" max="100" value="50" /></div>
+          <div class="wrapper luminance-detail"><input type="range" disabled min="0" max="100" value="50" /></div>
+          <div class="wrapper luminance-contrast"><input type="range" disabled min="0" max="100" value="50" /></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap-collabsible pcvignette">
+      <input id="collapsible-pcvignette" class="toggle pcvignette" type="checkbox" checked>
+      <label for="collapsible-pcvignette" class="lbl-toggle">裁切後暈影</label>
+      <div class="collapsible-content pcvignette">
+        <div class="content-inner">
+          <div class="wrapper style">Hightlight Priority</div>
+          <div class="wrapper amount"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper midpoint"><input type="range" disabled min="0" max="100" value="50" /></div>
+          <div class="wrapper roundness"><input type="range" disabled min="-100" max="100" value="50" /></div>
+          <div class="wrapper feather"><input type="range" disabled min="0" max="100" value="50" /></div>
+          <div class="wrapper vhighlights"><input type="range" disabled min="-100" max="100" value="50" /></div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="wrap-collabsible">
-    <input id="collapsible-color" class="toggle color" type="checkbox" checked>
-    <label for="collapsible-color" class="lbl-toggle">色調</label>
-    <div class="collapsible-content color">
-      <div class="content-inner">
-        <div class="wrapper temp"><input type="range" disabled min="2000" max="10000" value="0" /></div>
-        <div class="wrapper tint"><input type="range" disabled min="-150" max="150" value="50" /></div>
-        <div class="wrapper vibrance"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper saturation"><input type="range" disabled min="-100" max="100" value="50" /></div>
-      </div>
-    </div>
-  </div>
-  <div class="wrap-collabsible">
-    <input id="collapsible-effects" class="toggle effects" type="checkbox" checked>
-    <label for="collapsible-effects" class="lbl-toggle">效果</label>
-    <div class="collapsible-content effects">
-      <div class="content-inner">
-        <div class="wrapper texture reverse"><input type="range" disabled min="-100" max="100" value="0" /></div>
-        <div class="wrapper clarity reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper dehaze reverse"><input type="range" disabled min="-100" max="100" value="50" /></div>
-      </div>
-    </div>
-  </div>
-  <div class="wrap-collabsible">
-    <input id="collapsible-details" class="toggle" type="checkbox">
-    <label for="collapsible-details" class="lbl-toggle">細節</label>
-    <div class="collapsible-content">
-      <div class="content-inner">
-        <div class="wrapper sharpness"><input type="range" disabled min="0" max="150" value="0" /></div>
-        <div class="wrapper sharpen-radius"><input type="range" disabled min="0.5" max="3" value="1" /></div>
-        <div class="wrapper sharpen-detail"><input type="range" disabled min="0" max="100" value="50" /></div>
-        <div class="wrapper sharpen-masking reverse"><input type="range" disabled min="0" max="100" value="50" /></div>
-        <p>降噪</p>
-        <div class="wrapper luminance"><input type="range" disabled min="0" max="100" value="50" /></div>
-        <div class="wrapper luminance-detail"><input type="range" disabled min="0" max="100" value="50" /></div>
-        <div class="wrapper luminance-contrast"><input type="range" disabled min="0" max="100" value="50" /></div>
-      </div>
-    </div>
-  </div>
-  <div class="wrap-collabsible pcvignette">
-    <input id="collapsible-pcvignette" class="toggle pcvignette" type="checkbox" checked>
-    <label for="collapsible-pcvignette" class="lbl-toggle">裁切後暈影</label>
-    <div class="collapsible-content pcvignette">
-      <div class="content-inner">
-        <div class="wrapper style">Hightlight Priority</div>
-        <div class="wrapper amount"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper midpoint"><input type="range" disabled min="0" max="100" value="50" /></div>
-        <div class="wrapper roundness"><input type="range" disabled min="-100" max="100" value="50" /></div>
-        <div class="wrapper feather"><input type="range" disabled min="0" max="100" value="50" /></div>
-        <div class="wrapper vhighlights"><input type="range" disabled min="-100" max="100" value="50" /></div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>

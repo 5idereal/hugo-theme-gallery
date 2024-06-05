@@ -65,7 +65,7 @@ if (gallery) {
       html: '詳細',
       isButton: true,
       onClick: () => {
-        document.getElementById("mySidenav").style.width = "300px";
+        document.getElementById("mySidenav").style.width = "21rem";
       }
     });
   });
